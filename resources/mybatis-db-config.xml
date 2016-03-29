@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- Configurações do Log4j	-->
+	<settings>
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+	
+	<!-- Tipos anotados -->
+	<typeAliases>
+		<!-- Entidades -->
+		<package name="br.com.wro.nfe.model"/>
+		<!-- Enumerations -->
+		<package name="br.com.wro.nfe.enums"/>
+		<!-- Filtros e Type Handlers -->
+		<package name="br.com.wro.nfe.mybatis.ssamdb"/>	
+	</typeAliases>
+	
+	<!-- Mapeamento dos Type Handlers -->
+	<typeHandlers>
+		<package name="br.com.wro.nfe.mybatis.typehandler"/>
+	</typeHandlers>
+	
+	<!-- Configurações de Acesso ao Banco de dados -->
+		
+	<!-- Acesso via JDBC. -->
+	<environments default="development">
+		<environment id="development">
+		  <transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@servidor:1000:banco"/>
+                <property name="username" value="{username}"/>
+                <property name="password" value="{senha}"/>
+			</dataSource>
+	   </environment>
+	</environments>
+	
+	<!-- Mappers -->	
+	<mappers>
+		<package name="br.com.wro.nfe.mybatis.mapper"/>
+    </mappers>
+
+</configuration>
